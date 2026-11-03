@@ -1,0 +1,20 @@
+{
+  "name": "claude-a11y-auditor",
+  "description": "Accessibility tooling for Claude Code: the a11y scanner plugin",
+  "owner": {
+    "name": "Mehmet Ergul",
+    "url": "https://github.com/ergulmehmet92"
+  },
+  "plugins": [
+    {
+      "name": "a11y-scanner",
+      "source": "./",
+      "description": "Standalone WCAG 2.2 A/AA scanner with AI review, ticket rendering and audit calibration",
+      "category": "quality",
+      "tags": [
+        "accessibility",
+        "wcag"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+
+# Run output, login sessions and page lists contain URLs, screenshots and cookies
+a11y-runs/
+*session*/
+pages.json

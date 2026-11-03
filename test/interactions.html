@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Explorer fixture: planted interaction failures</title>
+<style>
+  body { font: 14px/1.4 sans-serif; margin: 24px; }
+  .panel, .tip, .toast { display: none; }
+  .panel.open { display: block; border: 1px solid #999; padding: 8px; }
+  .tip.show { display: block; position: absolute; background: #222; color: #fff; padding: 4px 8px; }
+  .toast.show { display: block; position: fixed; bottom: 16px; right: 16px; background: #222; color: #fff; padding: 8px; }
+  [role=dialog] { display: none; position: fixed; top: 80px; left: 80px; background: #fff; border: 2px solid #333; padding: 16px; }
+  [role=dialog].open { display: block; }
+  button { margin: 4px; }
+</style>
+</head>
+<body>
+<h1>Interactions</h1>
+<!-- Bad: dialog that does not take focus, is not modal, and does not return focus on close -->
+<button id="bad-open">Edit settings</button>
+<div id="bad-dialog" role="dialog" aria-label="Settings"><p>Settings</p><button id="bad-close">Close</button></div>
+
+<!-- Good: dialog that takes focus, is modal, and returns focus -->
+<button id="good-open">Rename</button>
+<div id="good-dialog" role="dialog" aria-modal="true" aria-label="Rename"><label>New name <input id="good-input"></label><button id="good-close">Done</button></div>
+
+<!-- Bad: toggle reveals controls without aria-expanded -->
+<button id="bad-toggle">Filters</button>
+<div id="panel" class="panel"><button>Owner</button><button>Status</button><button>Date</button></div>
+
+<!-- Good: toggle with aria-expanded -->
+<button id="good-toggle" aria-expanded="false" aria-controls="panel2">Columns</button>
+<div id="panel2" class="panel"><button>Name</button><button>Size</button></div>
+
+<!-- Bad: hover tip not exposed, disappears when hovered, not dismissible -->
+<span id="bad-tip-trigger" tabindex="0" style="text-decoration: underline dotted">Quota</span>
+<div id="bad-tip" class="tip">Quota resets every month on the 1st</div>
+
+<!-- Bad: save shows a toast outside any live region -->
+<button id="save">Save</button>
+<div id="toast" class="toast">Changes saved</div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('bad-open').onclick = () => $('bad-dialog').classList.add('open');
+  $('bad-close').onclick = () => { $('bad-dialog').classList.remove('open'); document.body.focus(); };
+  // Good dialog: background made inert while open, restored before focus returns to the trigger.
+  const background = [...document.body.children].filter((el) => el.id !== 'good-dialog' && el.localName !== 'script');
+  const setInert = (on) => { for (const el of background) el.inert = on; };
+  $('good-open').onclick = () => { $('good-dialog').classList.add('open'); setInert(true); $('good-input').focus(); };
+  $('good-close').onclick = () => { $('good-dialog').classList.remove('open'); setInert(false); $('good-open').focus(); };
+  $('good-dialog').addEventListener('keydown', (e) => { if (e.key === 'Escape') $('good-close').click(); });
+  $('bad-toggle').onclick = () => $('panel').classList.toggle('open');
+  $('good-toggle').onclick = () => { const o = $('panel2').classList.toggle('open'); $('good-toggle').setAttribute('aria-expanded', String(o)); };
+  const t = $('bad-tip-trigger'), tip = $('bad-tip');
+  t.onmouseenter = () => { const r = t.getBoundingClientRect(); tip.style.left = r.left + 'px'; tip.style.top = r.bottom + 4 + 'px'; tip.classList.add('show'); };
+  t.onmouseleave = () => tip.classList.remove('show');
+  $('save').onclick = () => { $('toast').classList.add('show'); };
+</script>
+</body>
+</html>

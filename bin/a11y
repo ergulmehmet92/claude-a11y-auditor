@@ -1,0 +1,9 @@
+#!/bin/sh
+# a11y CLI launcher. Resolves the package root through symlinks, then runs src/cli.mjs with Node 20+.
+self="$0"
+while [ -L "$self" ]; do
+  link=$(readlink "$self")
+  case "$link" in /*) self="$link" ;; *) self="$(dirname "$self")/$link" ;; esac
+done
+root="$(cd "$(dirname "$self")/.." && pwd)"
+exec node "$root/src/cli.mjs" "$@"

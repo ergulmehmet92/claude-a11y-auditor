@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "finding.schema.json",
+  "title": "Accessibility finding",
+  "description": "One finding = one issue title x one element x one test unit (page or UI state). Used for scanner output and for vendor audit findings mapped in for calibration.",
+  "type": "object",
+  "required": ["finding_id", "source", "wcag_sc", "level", "checkpoint_id", "issue_title", "detection", "impact",
+               "app_area", "test_unit", "role", "url", "source_html", "screenshots", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "finding_id": {"type": "string", "minLength": 1, "description": "Run-local ID from the scanner; a register assigns stable IDs"},
+    "source": {"enum": ["scanner", "vendor"]},
+    "vendor": {"type": "string", "description": "Audit vendor when source = vendor"},
+    "source_id": {"type": "string", "description": "Vendor issue ID, or the scanner fingerprint (stable across runs for the same check, route and element)"},
+    "run_id": {"type": ["string", "null"]},
+    "jira_key": {"type": ["string", "null"], "description": "Informational only; mutable"},
+
+    "check_id": {"type": ["string", "null"], "description": "Check library id (library/checks.csv)"},
+    "wcag_sc": {"type": "string", "pattern": "^[1-4]\\.[0-9]{1,2}\\.[0-9]{1,2}$"},
+    "level": {"enum": ["A", "AA", "AAA"]},
+    "checkpoint_id": {"type": "string", "pattern": "^[1-4]\\.[0-9]{1,2}\\.[0-9]{1,2}\\.[a-z]$", "description": "SC + variant letter, e.g. 2.1.1.a; variant x = not in the check library"},
+    "checkpoint_in_library": {"type": "boolean"},
+    "issue_title": {"type": "string", "description": "Standard title from the check library"},
+    "detection": {"enum": ["axe", "scripted", "ai-assisted", "manual"], "description": "axe = axe-core rule; scripted = deterministic browser check; ai-assisted = AI verdict on captured evidence; manual = human test"},
+    "verdict": {"enum": ["fail", "candidate"], "description": "candidate = scripted signal awaiting an AI or human verdict"},
+    "verdict_rationale": {"type": "string"},
+    "rule_id": {"type": ["string", "null"], "description": "axe-core rule id when detection = axe"},
+    "impact": {"enum": ["Critical", "Serious", "Moderate", "Minor"]},
+    "priority": {"enum": ["Very High", "High", "Medium", "Low"], "description": "Derived: Critical->Very High, Serious->High, Moderate->Medium, Minor->Low"},
+
+    "app_area": {"type": "string"},
+    "screen": {"type": "string"},
+    "test_unit": {"type": "string"},
+    "role": {"type": "string", "description": "User role the page was tested as (profile roles)"},
+    "url": {"type": "string", "format": "uri"},
+    "selector": {"type": "string"},
+    "component": {"type": ["string", "null"], "description": "Design-system or app component, from the profile's component prefixes"},
+    "code_path": {"type": ["string", "null"], "description": "Source file of the owning component"},
+
+    "source_html": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "outerHTML per affected element"},
+    "screenshots": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "test_unit_screenshots": {"type": "array", "items": {"type": "string"}},
+
+    "element_description": {"type": "string"},
+    "element_location": {"type": "string"},
+    "issue_description": {"type": "string"},
+    "steps_to_reproduce": {"type": "array", "items": {"type": "string"}},
+    "current_value": {"type": "string", "description": "e.g. current accessible name, contrast ratio, heading level"},
+    "suggested_value": {"type": "string"},
+    "note": {"type": "string"},
+
+    "cluster_id": {"type": ["string", "null"], "description": "Root-cause group; one fix closes every finding in it"},
+    "fix_scope": {"enum": ["design-system", "app", "content", "policy", null]},
+    "recommended_fix": {"type": "string"},
+    "references": {"type": "array", "items": {"type": "string", "format": "uri"}},
+
+    "reflow_dependent": {"type": "boolean", "description": "Depends on reflow / orientation support (1.4.10, 1.3.4)"},
+
+    "status": {"enum": ["new", "open", "in-progress", "in-review", "done"]},
+    "resolution": {"enum": ["duplicate", "no-action", "fixed", "pass", null]},
+    "pr_url": {"type": ["string", "null"], "format": "uri"},
+    "verified_by": {"type": "array", "items": {"enum": ["scan", "ai", "manual", "vendor"]}}
+  },
+  "allOf": [
+    {"if": {"properties": {"detection": {"const": "axe"}}}, "then": {"required": ["rule_id"]}},
+    {"if": {"required": ["resolution"], "properties": {"resolution": {"not": {"const": null}}}},
+     "then": {"properties": {"status": {"const": "done"}}}},
+    {"if": {"properties": {"resolution": {"const": "pass"}}}, "then": {"properties": {"verified_by": {"contains": {"const": "vendor"}}}}},
+    {"if": {"properties": {"source": {"const": "vendor"}}}, "then": {"required": ["vendor"]}}
+  ]
+}

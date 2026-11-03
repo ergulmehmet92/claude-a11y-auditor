@@ -1,0 +1,18 @@
+{
+  "name": "a11y-scanner",
+  "displayName": "A11y Scanner",
+  "version": "0.2.0",
+  "description": "Standalone WCAG 2.2 A/AA scanner: axe-core plus scripted checks for manual checkpoints, AI review of candidates, ticket rendering and calibration against vendor audits",
+  "author": {
+    "name": "Mehmet Ergul",
+    "url": "https://github.com/ergulmehmet92"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe",
+    "vpat"
+  ],
+  "repository": "https://github.com/ergulmehmet92/claude-a11y-auditor"
+}

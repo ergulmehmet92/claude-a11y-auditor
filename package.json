@@ -1,0 +1,21 @@
+{
+  "name": "a11y-scanner",
+  "version": "0.2.0",
+  "private": true,
+  "repository": "github:ergulmehmet92/claude-a11y-auditor",
+  "license": "UNLICENSED",
+  "description": "Standalone accessibility scanner: axe-core plus scripted checks for manual WCAG 2.2 checkpoints, AI-review loop, ticket rendering and calibration against vendor audits",
+  "type": "module",
+  "bin": {"a11y": "bin/a11y"},
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "selftest": "node src/cli.mjs selftest"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "axe-core": "4.14.0",
+    "playwright": "1.64.1"
+  }
+}

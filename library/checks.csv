@@ -1,0 +1,124 @@
+check_id,wcag_sc,checkpoint_id,title,method,axe_rule,default_impact,technique
+text-alternative-for-the-active-image-missing,1.1.1,1.1.1.a,Text alternative for the active image missing,A,,Critical,List images/icons without a name; AI decides active vs decorative
+text-alternative-for-the-informative-image-is-missing,1.1.1,1.1.1.b,Text alternative for the informative image is missing,A,,Critical,List images/icons without a name; AI decides informative vs decorative
+short-and-detailed-text-alternatives-missing-for-complex-image,1.1.1,1.1.1.c,Short and detailed text alternatives missing for complex image,A,,Critical,AI flags charts/diagrams without a long description
+captions-are-not-available-for-recorded-multimedia,1.2.2,1.2.2.a,Captions are not available for recorded multimedia,H,,Critical,Media review
+no-text-or-audio-description-available-for-multimedia-content,1.2.3,1.2.3.a,No text or audio description available for multimedia content,H,,Serious,Media review
+audio-description-is-not-available,1.2.5,1.2.5.a,Audio description is not available,H,,Critical,Media review
+certain-aria-roles-must-be-contained-by-particular-parents,1.3.1,1.3.1.a,Certain ARIA roles must be contained by particular parents,axe,aria-required-parent,Critical,axe-core rule aria-required-parent
+certain-aria-roles-must-contain-particular-children,1.3.1,1.3.1.a,Certain ARIA roles must contain particular children,axe,aria-required-children,Critical,axe-core rule aria-required-children
+information-or-relationship-only-presented-visually,1.3.1,1.3.1.a,Information or relationship only presented visually,A,,Critical,Screenshot vs a11y tree: visual grouping/relations missing in markup
+incorrect-semantic-markup,1.3.1,1.3.1.a,Incorrect semantic markup,A,,Serious,Screenshot vs roles
+data-table-has-missing-or-incomplete-header-cell-markup,1.3.1,1.3.1.b,Data table has missing or incomplete header cell markup,SA,,Critical,Detect grid layouts (rows x columns) without table/grid roles or headers; AI confirms
+data-cell-is-marked-as-a-header-cell,1.3.1,1.3.1.b,Data cell is marked as a header cell,A,,Serious,AI reviews th/columnheader content
+content-should-be-in-a-data-table-but-is-not,1.3.1,1.3.1.b,Content should be in a data table but is not,SA,,Critical,Detect aligned row/column layouts without table semantics; AI confirms
+complex-table-headers-id-association-is-incorrect,1.3.1,1.3.1.b,Complex table headers-id association is incorrect,S,,Serious,Validate headers/id references
+more-than-one-table-element-used-to-create-a-single-table,1.3.1,1.3.1.b,More than one table element used to create a single table,S,,Critical,Detect header table + body table pairs with matching columns
+group-of-form-controls-not-associated-with-group-label,1.3.1,1.3.1.d,Group of form controls not associated with group label,SA,,Serious,Find visually grouped inputs without group/fieldset; AI confirms
+group-of-checkboxes-not-associated-with-group-label,1.3.1,1.3.1.d,Group of checkboxes not associated with group label,S,,Serious,Sibling checkboxes without group/fieldset name
+group-of-radio-buttons-not-associated-with-group-label,1.3.1,1.3.1.d,Group of radio buttons not associated with group label,S,,Serious,Radios without radiogroup/fieldset name
+visual-heading-text-is-not-marked-as-heading,1.3.1,1.3.1.e,Visual heading text is not marked as heading,SA,,Serious,"Text styled larger/bolder than body and starting a section, not a heading; AI confirms"
+heading-levels-are-out-of-order,1.3.1,1.3.1.e,Heading levels are out of order,S,,Serious,Heading level sequence check
+text-should-not-be-marked-as-a-heading,1.3.1,1.3.1.e,Text should not be marked as a heading,A,,Serious,AI reviews heading content
+visual-list-is-not-marked-up-as-list,1.3.1,1.3.1.f,Visual list is not marked up as list,SA,,Serious,Repeated sibling items with bullets/icons without list roles; AI confirms
+reading-order-of-static-content-changes-meaning,1.3.2,1.3.2.a,Reading order of static content changes meaning,SA,,Critical,DOM order vs visual order; AI judges meaning
+aria-hidden-true-is-used-incorrectly,1.3.2,1.3.2.a,"aria-hidden=""true"" is used incorrectly",SA,,Critical,Visible informative content under aria-hidden; AI judges
+hidden-content-is-readable-with-a-screen-reader,1.3.2,1.3.2.a,Hidden content is readable with a screen reader,S,,Serious,"In a11y tree but not visible (opacity, off-screen, zero size)"
+correct-reading-order-of-dynamic-content-not-determinable,1.3.2,1.3.2.a,Correct reading order of dynamic content not determinable,SA,,Serious,Inserted content position vs trigger after scripted action
+content-outside-modal-is-not-hidden-from-screen-readers,1.3.2,1.3.2.a,Content outside modal is not hidden from screen readers,S,,Serious,Open dialog: background not inert / aria-modal missing
+informative-static-content-is-not-readable-by-a-screen-reader,1.3.2,1.3.2.a,Informative (static) content is not readable by a screen reader,S,,Critical,Visible text absent from the a11y tree
+screen-reader-focus-does-not-move-to-intended-target,1.3.2,1.3.2.a,Screen reader focus does not move to intended target,H,,Moderate,Screen reader test
+content-or-functionality-missing-due-to-orientation,1.3.4,1.3.4.a,Content or functionality missing due to orientation,SA,,Serious,Portrait viewport capture; AI compares with landscape
+not-presented-in-current-display-orientation,1.3.4,1.3.4.a,Not presented in current display orientation,S,,Serious,Orientation lock detection
+identify-input-purpose-missing,1.3.5,1.3.5.a,Identify input purpose missing,S,,Serious,"Personal-data fields (name, email, phone) without autocomplete"
+color-alone-is-used-to-convey-info,1.4.1,1.4.1.a,Color alone is used to convey info,A,,Serious,Screenshot: meaning carried only by colour
+color-alone-is-used-to-visually-convey-the-state-of-a-control,1.4.1,1.4.1.a,Color alone is used to visually convey the state of a control,SA,,Serious,State screenshots differ only in hue; AI confirms
+color-alone-is-used-to-identify-error-s,1.4.1,1.4.1.a,Color alone is used to identify error(s),SA,,Serious,Error state differs only in colour; AI confirms
+link-contrast-is-not-at-least-3-1-with-surrounding-text,1.4.1,1.4.1.b,Link contrast is not at least 3:1 with surrounding text,S,,Serious,Inline link vs body text contrast
+links-must-be-distinguishable-without-relying-on-color,1.4.1,1.4.1.b,Links must be distinguishable without relying on color,axe,link-in-text-block,Serious,axe-core rule link-in-text-block
+text-content-lacks-4-5-1-contrast-ratio,1.4.3,1.4.3.a,Text content lacks 4.5:1 contrast ratio,S,,Serious,Computed text contrast incl. overlays axe skips
+control-text-lacks-4-5-1-contrast-ratio-on-hover-or-focus,1.4.3,1.4.3.a,Control text lacks 4.5:1 contrast ratio on hover or focus,S,,Serious,Contrast in hover/focus states
+functionality-is-lost-at-200-zoom,1.4.4,1.4.4.a,Functionality is lost at 200% zoom,SA,,Serious,640px viewport: controls clipped or unreachable; AI compares
+content-is-lost-at-200-zoom,1.4.4,1.4.4.a,Content is lost at 200% zoom,SA,,Serious,640px viewport: text clipped/truncated without access; AI compares
+text-cannot-be-resized-by-200,1.4.4,1.4.4.a,Text cannot be resized by 200%,S,,Serious,Fixed px text blocking zoom / viewport scaling
+info-or-functionality-is-unavailable-at-320px-width-equivalent,1.4.10,1.4.10.a,Info or functionality is unavailable at 320px width equivalent,SA,,Serious,"320px viewport: horizontal scroll, clipped/off-screen controls; AI compares with 1280px"
+info-or-functionality-is-lost-due-to-overlapping-content-at-320p,1.4.10,1.4.10.a,Info or functionality is lost due to overlapping content at 320px equivalent,SA,,Serious,320px viewport: overlapping text/control boxes; AI confirms
+active-user-interface-component-lacks-3-to-1-contrast-ratio,1.4.11,1.4.11.a,Active user interface component lacks 3 to 1 contrast ratio,S,,Serious,Boundary/fill vs adjacent colour of controls
+state-of-active-component-lacks-3-to-1-contrast-ratio,1.4.11,1.4.11.b,State of active component lacks 3 to 1 contrast ratio,S,,Serious,Selected/checked/hover state colours vs adjacent
+focus-indicator-lacks-3-to-1-contrast-ratio,1.4.11,1.4.11.b,Focus indicator lacks 3 to 1 contrast ratio,S,,Serious,Focus each element; pixel diff contrast of the indicator
+an-icon-lacks-3-to-1-contrast-ratio,1.4.11,1.4.11.c,An icon lacks 3 to 1 contrast ratio,S,,Serious,Icon foreground vs background pixels
+graphical-object-lacks-3-to-1-contrast-ratio,1.4.11,1.4.11.c,Graphical object lacks 3 to 1 contrast ratio,SA,,Serious,Chart/graphic parts contrast; AI picks the meaningful parts
+text-spacing-content-cut-off,1.4.12,1.4.12.a,Text spacing content cut off,S,,Serious,Apply 1.4.12 spacing; detect text overflow clipping
+text-spacing-content-overlaps,1.4.12,1.4.12.a,Text spacing content overlaps,S,,Serious,Apply 1.4.12 spacing; detect box overlaps
+hover-content-disappearing,1.4.13,1.4.13.a,Hover content disappearing,S,,Serious,"Hover trigger, move pointer onto popup: popup must persist"
+additional-content-not-dismissible,1.4.13,1.4.13.a,Additional content not dismissible,S,,Serious,Hover/focus popup: Escape must dismiss without moving focus
+function-cannot-be-performed-by-keyboard-alone,2.1.1,2.1.1.a,Function cannot be performed by keyboard alone,S,,Critical,"Clickable elements (listeners, pointer cursor) not reachable or operable by keyboard"
+keyboard-trap,2.1.2,2.1.2.a,Keyboard trap,S,,Critical,Tab walk: focus cycles inside a component with no exit
+timed-toast-without-user-control,2.2.1,2.2.1.a,Timed Toast Without User Control,SA,,Critical,Observe toasts in scripted flows: auto-dismiss without pause/close
+content-visually-appears-and-disappears-with-no-ability-to-adjus,2.2.1,2.2.1.a,Content visually appears and disappears with no ability to adjust timing,SA,,Serious,Observe transient content in scripted flows
+timeout-mechanism-is-not-keyboard-accessible,2.2.1,2.2.1.a,Timeout mechanism is not keyboard accessible,H,,Critical,Session-timeout dialog test
+auto-playing-media-or-animation-has-no-mechanism-to-pause-stop-o,2.2.2,2.2.2.a,"Auto-playing media or animation has no mechanism to pause, stop, or hide",H,,Serious,Animation review
+no-control-mechanism-provided-for-automatically-updating-content,2.2.2,2.2.2.b,No control mechanism provided for automatically updating content,H,,Serious,Live-updating content review
+page-title-element-does-not-identify-purpose-of-page,2.4.2,2.4.2.a,Page <title> element does not identify purpose of page,A,,Serious,AI compares title with page content
+keyboard-focus-order-is-not-logical,2.4.3,2.4.3.a,Keyboard focus order is not logical,SA,,Serious,Focus walk sequence vs visual position; AI judges
+hidden-or-empty-element-receives-focus,2.4.3,2.4.3.a,Hidden or empty element receives focus,S,,Serious,Focus walk: focused element invisible or empty
+keyboard-focus-is-lost-or-misplaced-due-to-user-interaction-or-c,2.4.3,2.4.3.a,Keyboard focus is lost or misplaced due to user interaction or content update,S,,Serious,Scripted actions: focus falls to body or removed node
+modal-is-closed-focus-is-not-returned-to-trigger,2.4.3,2.4.3.a,"Modal is closed, focus is not returned to trigger",S,,Serious,Open/close dialog: focus returns to trigger
+keyboard-focus-does-not-move-to-intended-target,2.4.3,2.4.3.a,Keyboard focus does not move to intended target,S,,Moderate,Scripted actions: focus target after open/navigate
+purpose-of-link-is-not-clear-in-context,2.4.4,2.4.4.a,Purpose of link is not clear in context,A,,Serious,AI judges link text in context
+multiple-links-have-the-same-programmatic-link-text-but-differen,2.4.4,2.4.4.a,Multiple links have the same programmatic link text but different destinations,S,,Serious,"Same name, different href"
+programmatic-label-does-not-convey-purpose-of-control,2.4.6,2.4.6.b,Programmatic label does not convey purpose of control,A,,Serious,AI judges name vs visible context and function
+controls-have-same-name-but-different-actions,2.4.6,2.4.6.b,Controls have same name but different actions,S,,Serious,Same role + name repeated with different targets/contexts
+focus-indicator-is-missing,2.4.7,2.4.7.a,Focus indicator is missing,S,,Critical,Focus each element; no visible pixel change
+focused-element-is-completely-covered-by-other-content,2.4.11,2.4.11.a,Focused element is completely covered by other content,S,,Moderate,Focus walk: focused box covered by sticky/fixed layers
+path-based-gesture-required,2.5.1,2.5.1.a,Path-based gesture required,H,,Serious,Gesture review
+accessible-name-does-not-contain-visible-label,2.5.3,2.5.3.a,Accessible name does not contain visible label,S,,Serious,Visible text vs accessible name (2.5.3 algorithm)
+accessible-name-missing,2.5.3,2.5.3.a,Accessible name missing,S,,Serious,Interactive element with empty name
+accessible-name-has-interspersed-words,2.5.3,2.5.3.a,Accessible name has interspersed words,S,,Serious,Visible label not a contiguous substring of the name
+functionality-requires-a-dragging-movement-with-no-alternative,2.5.7,2.5.7.a,Functionality requires a dragging movement with no alternative,SA,,Serious,Find draggable/resizable elements; AI checks for single-pointer alternative
+all-touch-targets-must-be-24px-large-or-leave-sufficient-space,2.5.8,2.5.8.a,"All touch targets must be 24px large, or leave sufficient space",axe,target-size,Serious,axe-core rule target-size
+target-does-not-meet-minimum-size-or-spacing,2.5.8,2.5.8.a,Target does not meet minimum size or spacing,S,,Serious,Measure target boxes and spacing (24px)
+change-in-language-is-not-marked,3.1.2,3.1.2.a,Change in language is not marked,A,,Serious,AI detects foreign-language passages without lang
+the-change-in-language-for-a-portion-of-content-is-not-correct,3.1.2,3.1.2.a,The change in language for a portion of content is not correct,A,,Serious,AI checks lang values against text
+form-field-causes-unexpected-change,3.2.2,3.2.2.a,Form field causes unexpected change,H,,Critical,Context-change review
+form-field-with-error-not-identified,3.3.1,3.3.1.b,Form field with error not identified,SA,,Critical,Submit invalid/empty forms; check aria-invalid and visible error
+input-error-is-not-described-in-text,3.3.1,3.3.1.b,Input error is not described in text,SA,,Critical,Submit invalid forms; AI checks the error text
+select-or-dropdown-control-missing-a-visible-label,3.3.2,3.3.2.a,Select or dropdown control missing a visible label,S,,Moderate,Select/combobox without visible label text
+label-is-not-persistent,3.3.2,3.3.2.a,Label is not persistent,S,,Serious,Placeholder-only label disappears on input
+visible-label-missing,3.3.2,3.3.2.a,Visible label missing,S,,Serious,Input without visible label text
+visible-group-label-missing,3.3.2,3.3.2.a,Visible group label missing,S,,Serious,Group without visible caption
+instructions-missing-for-assistive-technology-users,3.3.2,3.3.2.b,Instructions missing for assistive technology users,A,,Serious,AI checks complex inputs for instructions
+error-message-does-not-convey-required-format,3.3.3,3.3.3.a,Error message does not convey required format,SA,,Serious,Submit invalid values; AI reads the message
+error-message-does-not-suggest-fix,3.3.3,3.3.3.a,Error message does not suggest fix,SA,,Serious,Submit invalid values; AI reads the message
+aria-commands-must-have-an-accessible-name,4.1.2,4.1.2.a,ARIA commands must have an accessible name,axe,aria-command-name,Serious,axe-core rule aria-command-name
+state-selected-state-of-the-element-is-missing-or-incorrect,4.1.2,4.1.2.a,State: Selected state of the element is missing or incorrect,SA,,Serious,Visually selected item vs aria-selected/current; AI confirms
+form-field-form-field-is-missing-an-accessible-name,4.1.2,4.1.2.a,Form field: Form field is missing an accessible name,S,,Critical,Form field with empty name
+form-elements-must-have-labels,4.1.2,4.1.2.a,Form elements must have labels,axe,label,Critical,axe-core rule label
+button-button-does-not-have-a-role,4.1.2,4.1.2.a,Button: Button does not have a role,S,,Serious,Clickable non-button without role
+button-button-is-missing-both-a-role-and-a-name,4.1.2,4.1.2.a,Button: Button is missing both a role and a name,S,,Critical,Clickable element without role and name
+aria-hidden-element-must-not-be-focusable-or-contain-focusable-e,4.1.2,4.1.2.a,ARIA hidden element must not be focusable or contain focusable elements,axe,aria-hidden-focus,Serious,axe-core rule aria-hidden-focus
+button-button-pressed-state-is-not-conveyed,4.1.2,4.1.2.a,Button: Button pressed state is not conveyed,SA,,Serious,Toggle buttons: visual state change without aria-pressed
+buttons-must-have-discernible-text,4.1.2,4.1.2.a,Buttons must have discernible text,axe,button-name,Critical,axe-core rule button-name
+button-button-does-not-have-a-name,4.1.2,4.1.2.a,Button: Button does not have a name,S,,Critical,Button with empty name
+state-expand-collapse-state-of-the-element-is-missing-or-incorre,4.1.2,4.1.2.a,State: Expand/collapse state of the element is missing or incorrect,S,,Serious,Activate trigger: popup appears but no aria-expanded
+checkbox-custom-checkbox-does-not-have-a-role-and-or-state,4.1.2,4.1.2.a,Checkbox: Custom checkbox does not have a role and/or state,S,,Critical,Checkbox-like control without role/aria-checked
+state-table-sort-state-is-missing-or-incorrect,4.1.2,4.1.2.a,State: Table sort state is missing or incorrect,S,,Serious,Sortable header without aria-sort
+anchor-or-button-nested-inside-other-anchor-or-button,4.1.2,4.1.2.a,Anchor or button nested inside other anchor or button,S,,Moderate,Nested interactive elements
+form-group-section-with-role-group-or-radiogroup-does-not-have-a,4.1.2,4.1.2.a,"Form Group: Section with role=""group"" or ""radiogroup"" does not have a label",S,,Serious,Group roles without name
+state-the-disabled-state-of-an-element-is-not-conveyed,4.1.2,4.1.2.a,State: The disabled state of an element is not conveyed,SA,,Serious,Visually disabled controls without disabled/aria-disabled
+links-must-have-discernible-text,4.1.2,4.1.2.a,Links must have discernible text,axe,link-name,Serious,axe-core rule link-name
+combobox-combobox-is-missing-appropriate-roles-and-or-attributes,4.1.2,4.1.2.b,Combobox: Combobox is missing appropriate roles and/or attributes,S,,Critical,APG combobox pattern validation
+tooltip-tooltip-content-is-not-accessible-to-screen-readers,4.1.2,4.1.2.b,Tooltip: Tooltip content is not accessible to screen readers,S,,Critical,Tooltip shown but not referenced by aria-describedby/name
+elements-must-only-use-supported-aria-attributes,4.1.2,4.1.2.b,Elements must only use supported ARIA attributes,axe,aria-allowed-attr,Critical,axe-core rule aria-allowed-attr
+role-the-element-s-role-is-missing-or-incorrect,4.1.2,4.1.2.b,Role: The element's role is missing or incorrect,A,,Critical,AI compares behaviour/appearance with role
+dialog-alert-dialog-dialog-is-missing-appropriate-role-and-or-at,4.1.2,4.1.2.b,Dialog / Alert Dialog: Dialog is missing appropriate role and/or attributes,S,,Moderate,Dialog pattern validation
+breadcrumb-breadcrumb-region-is-missing-appropriate-roles-and-or,4.1.2,4.1.2.b,Breadcrumb: Breadcrumb region is missing appropriate roles and/or attributes,S,,Moderate,Breadcrumb pattern validation
+states-properties-the-element-has-missing-or-incorrect-states-or,4.1.2,4.1.2.b,States/Properties: The element has missing or incorrect states or properties,SA,,Critical,Pattern validation; AI reviews leftovers
+treeview-file-system-navigator-missing-appropriate-roles-and-or-,4.1.2,4.1.2.b,Treeview: File system navigator missing appropriate roles and/or attributes,S,,Critical,APG tree pattern validation
+elements-must-only-use-permitted-aria-attributes,4.1.2,4.1.2.b,Elements must only use permitted ARIA attributes,axe,aria-prohibited-attr,Serious,axe-core rule aria-prohibited-attr
+the-group-of-radio-buttons-announces-an-incorrect-index-count,4.1.2,4.1.2.b,The group  of radio buttons announces an incorrect index count,H,,Critical,Screen reader test
+the-element-functions-as-if-it-has-two-roles,4.1.2,4.1.2.b,The element functions as if it has two roles.,A,,Serious,AI reviews behaviour vs role
+aria-attributes-must-conform-to-valid-values,4.1.2,4.1.2.b,ARIA attributes must conform to valid values,axe,aria-valid-attr-value,Critical,axe-core rule aria-valid-attr-value
+date-picker-date-picker-is-missing-appropriate-roles-and-or-attr,4.1.2,4.1.2.b,Date Picker: Date picker is missing appropriate roles and/or attributes,S,,Critical,APG date picker pattern validation
+grid-grid-is-missing-appropriate-roles-and-or-attributes,4.1.2,4.1.2.b,Grid: Grid is missing appropriate roles and/or attributes,S,,Critical,APG grid pattern validation
+status-message-not-automatically-announced,4.1.3,4.1.3.a,Status message not automatically announced,SA,,Serious,Scripted flows: new visible status text outside live regions; AI confirms

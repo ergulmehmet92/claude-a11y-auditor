@@ -1,0 +1,17 @@
+{
+  "name": "default",
+  "description": "Generic profile. Copy it and adjust it for your product: roles, design-system prefixes, login hosts.",
+  "roles": ["Default"],
+  "component_prefixes": [],
+  "component_tags": [],
+  "volatile_class_patterns": ["^ng-", "^cdk-", "^css-[a-z0-9]+$", "^sc-[a-zA-Z]+$", "^jsx-\\d+$", "^svelte-", "^_[a-zA-Z0-9]{5,}$", "\\d{3,}"],
+  "volatile_id_patterns": ["^id-[0-9a-f-]{8,}", "^:r[0-9a-z]+:$", "^radix-", "^headlessui-", "^mat-", "^cdk-", "\\d{4,}"],
+  "login_hosts": [],
+  "login_path_pattern": "login|sso|signin|sign-in|auth",
+  "viewport": {"width": 1280, "height": 900},
+  "checks": ["axe", "tree", "keyboard", "spacing", "focus", "viewport"],
+  "axe_tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa"],
+  "reflow_widths": {"reflow": 320, "zoom200": 640},
+  "focus_walk_max_steps": 150,
+  "explore_deny": "log ?out|sign ?out|delete (my )?account|deactivate"
+}
