@@ -90,4 +90,4 @@ Keep run folders, session folders and internal `pages.json` files out of version
 
 ## Licence
 
-Not yet decided. The package is marked `UNLICENSED` (private) until it is.
+[MIT](LICENSE)

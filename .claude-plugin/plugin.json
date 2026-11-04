@@ -14,5 +14,6 @@
     "axe",
     "vpat"
   ],
-  "repository": "https://github.com/ergulmehmet92/claude-a11y-auditor"
+  "repository": "https://github.com/ergulmehmet92/claude-a11y-auditor",
+  "license": "MIT"
 }

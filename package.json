@@ -1,9 +1,8 @@
 {
   "name": "a11y-scanner",
   "version": "0.2.0",
-  "private": true,
-  "repository": "github:ergulmehmet92/claude-a11y-auditor",
-  "license": "UNLICENSED",
+    "repository": "github:ergulmehmet92/claude-a11y-auditor",
+  "license": "MIT",
   "description": "Standalone accessibility scanner: axe-core plus scripted checks for manual WCAG 2.2 checkpoints, AI-review loop, ticket rendering and calibration against vendor audits",
   "type": "module",
   "bin": {"a11y": "bin/a11y"},
